@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Antopologi Team</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4eaf1 100%);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .logo-circle {
+        width: 300px; /* Sesuaikan ukuran lingkaran */
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: fixed; /* Untuk memposisikan logo */
+      }
+
+      .logo-image {
+        width: 80%; /* Sesuaikan ukuran logo di dalam lingkaran */
+        height: auto;
+        object-fit: contain;
+      }
+
+      /* Untuk posisi logo di pojok kiri atas */
+      .logo-circle.top-left {
+        top: 10px;
+        left: -2%;
+        position: fixed;
+      }
+
+      /* Untuk posisi logo di pojok kanan atas */
+      .logo-circle.top-right {
+        width: 130px;
+        top: 13px;
+        right: 2%;
+        position: fixed;
+      }
+
+      header {
+        background-image: url("bela1.jpg"); /* Ganti dengan nama file gambar Anda */
+        background-size: cover; /* Mengatur gambar agar menutupi seluruh area */
+        background-position: center; /* Memusatkan gambar */
+        background-repeat: no-repeat; /* Menghindari pengulangan gambar */
+        color: white;
+        text-align: center;
+        padding: 60px 0;
+        margin-bottom: 0px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        border-radius: 7px;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* Warna hitam dengan transparansi */
+        z-index: 1; /* Pastikan overlay berada di bawah teks */
+      }
+
+      header h1 {
+        font-size: 3.3em;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8),
+          /* Bayangan kanan bawah */ -1px -1px 0 rgba(0, 0, 0, 0.8),
+          /* Bayangan kiri atas */ 1px -1px 0 rgba(0, 0, 0, 0.8),
+          /* Bayangan kanan atas */ -1px 1px 0 rgba(0, 0, 0, 0.8); /* Bayangan kiri bawah */
+        position: relative;
+        text-transform: uppercase;
+        font-family: "Madelyn";
+        text-align: center;
+        color: white; /* Warna teks utama */
+      }
+      header p {
+        font-size: 1.2em;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8),
+          /* Bayangan kanan bawah */ -1px -1px 0 rgba(0, 0, 0, 0.8),
+          /* Bayangan kiri atas */ 1px -1px 0 rgba(0, 0, 0, 0.8),
+          /* Bayangan kanan atas */ -1px 1px 0 rgba(0, 0, 0, 0.8); /* Bayangan kiri bawah */
+        text-align: center;
+        font-family: "Segoe UI";
+        color: white; /* Warna teks utama */
+      }
+
+      p {
+        margin: 7px 0; /* Menghapus margin default */
+        text-align: justify;
+      }
+
+      .poster-image h1 {
+        text-align: center;
+        color: #1a4f7a;
+        padding-bottom: 20px;
+      }
+
+      .poster-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        margin: 40px 0;
+        align-items: start;
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .poster-section:hover {
+        transform: translateY(-5px);
+      }
+
+      .poster-image {
+        flex: 1;
+        min-width: 300px;
+        position: relative;
+      }
+
+      .poster-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease;
+      }
+
+      .poster-image img:hover {
+        transform: scale(1.02);
+      }
+
+      .poster-details {
+        flex: 2;
+        min-width: 300px;
+        animation: fadeIn 0.8s ease-out;
+      }
+
+      .poster-details h2 {
+        color: #1a4f7a;
+        margin-bottom: 25px;
+        font-size: 2em;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .poster-details h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #1a4f7a 0%, #2c3e50 100%);
+        border-radius: 2px;
+      }
+
+      .detail-section {
+        margin-bottom: 30px;
+        padding: 20px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .detail-section:hover {
+        transform: translateX(5px);
+      }
+
+      .detail-section h3 {
+        color: #34495e;
+        margin-bottom: 15px;
+        font-size: 1.3em;
+        display: flex;
+        align-items: center;
+      }
+
+      .detail-section h3::before {
+        content: "●";
+        color: #1a4f7a;
+        margin-right: 10px;
+        font-size: 0.8em;
+      }
+
+      .detail-section p {
+        line-height: 1.8;
+        color: #555;
+        font-size: 1.1em;
+      }
+
+      .highlight-box {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        margin-top: 30px;
+        border-left: 4px solid #dcdfe1;
+        transition: transform 0.3s ease;
+      }
+
+      .highlight-box:hover {
+        transform: translateX(5px);
+      }
+
+      .detail-section ul {
+        margin-left: 20px;
+        margin-top: 15px;
+      }
+
+      .detail-section li {
+        margin: 10px 0;
+        padding-left: 10px;
+        position: relative;
+        transition: transform 0.2s ease;
+      }
+
+      .detail-section li:hover {
+        transform: translateX(5px);
+      }
+
+      .detail-section li::before {
+        content: "→";
+        position: absolute;
+        left: -20px;
+        color: #e3e6e9;
+      }
+
+      .footer {
+        background: linear-gradient(45deg, #1a4f7a 0%, #2c3e50 100%);
+        color: white;
+        text-align: center;
+        padding: 30px 0;
+        margin-top: 60px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer p {
+        text-align: center;
+        font-size: 1.5em;
+        font-family: "Madelyn";
+      }
+
+      .footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: skewY(2deg);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .poster-section {
+          flex-direction: column;
+          padding: 20px;
+        }
+
+        .logo-circle {
+          width: 120px;
+          height: 30px;
+        }
+
+        .logo-circle.top-right {
+          width: 60px;
+          top: 12px;
+        }
+
+        .logo-circle.top-left {
+          top: 12px;
+        }
+
+        header h1 {
+          font-size: 4.5vw; /* Ukuran font lebih kecil untuk perangkat kecil */
+        }
+
+        header p {
+          font-size: 4vw; /* Ukuran font lebih kecil untuk perangkat kecil */
+        }
+
+        .footer p {
+          font-size: 4vw;
+        }
+        .detail-section,
+        .highlight-box {
+          padding: 15px;
+        }
+      }
+
+      /* Animasi hover untuk interaktivitas */
+      .detail-section,
+      .highlight-box,
+      .poster-image img {
+        transition: all 0.3s ease;
+      }
+
+      /* Efek glass morphism untuk beberapa elemen */
+      .detail-section {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <!-- Logo pojok kiri atas -->
+        <div class="logo-circle top-left">
+          <img
+            src="LOGO_PIPS_FISIP__BARU_-removebg-preview.png"
+            alt="Logo"
+            class="logo-image"
+          />
+        </div>
+
+        <!-- Logo pojok kanan atas -->
+        <div class="logo-circle top-right">
+          <img src="ON - ORANGE.png" alt="Logo" class="logo-image" />
+        </div>
+        <h1 style="display: inline-block; vertical-align: middle">
+          Harmoni Budaya dan Pariwisata
+        </h1>
+        <p>Eksplorasi Nilai Nilai Luhur Masyarakat Cempaga</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="poster-section">
+        <div class="poster-image">
+          <h1>Anthropology Team</h1>
+          <img src="poster.jpg" alt="Poster Kampanye Lingkungan" />
+        </div>
+
+        <div class="poster-details">
+          <h2>
+            Harmoni budaya dan pariwisata : Eksplorasi nilai nilai luhur
+            masyarakat cempaga
+          </h2>
+
+          <div class="detail-section">
+            <h3>Profil Desa Cempaga</h3>
+            <img
+              src="profil.jpg"
+              alt="Profil Desa Cempaga"
+              style="
+                flex: 1;
+                width: 100%;
+                height: auto;
+                border-radius: 15px;
+                margin-bottom: 15px;
+              "
+            />
+            <p>
+              Desa cempaga adalah sebuah desa yang terletak di kecamatan Banjar,
+              Kabupaten Buleleng, Bali. Desa Cempaga dikenal dengan keindahan
+              alamnya, kaya akan budayanya, serta kehidupan masyarakatnya yang
+              masih kental dengan Tradisi dan kearifan lokalnya. Desa Cempaga
+              menawarkan suasana desa yang otentik bagi para pengunjung yang
+              ingin merasakan suasana pedesaan bali yang sangat asri. Cempaga
+              merupakan salah satu desa adat tertua yang dikenal sebagai desa
+              Bali Aga. memiliki dua dusun yaitu Dusun Corot dan Dusun Desa.
+              Desa Cempaga terletak di dataran tinggi dengan pemandangan alam
+              yang memukau.
+            </p>
+          </div>
+
+          <div class="detail-section">
+            <h3>Budaya dan Tradisi Desa Cempaga</h3>
+            <img
+              src="budaya dan tradisi1.jpg"
+              alt="Profil Desa Cempaga"
+              style="
+                flex: 1;
+                width: 100%;
+                height: auto;
+                border-radius: 15px;
+                margin-bottom: 15px;
+              "
+            />
+            <p>
+              Desa Cempaga memiliki beragam tradisi dan budaya unik yang erat
+              kaitannya dengan agama Hindu. Salah satu warisan budaya yang
+              menonjol adalah berbagai tarian sakral yang hanya ditampilkan
+              dalam upacara-upacara tertentu dan memiliki makna mendalam.
+              Tarian-tarian ini meliputi Tari Jangkang yang menggambarkan
+              prajurit perang dan ditarikan oleh anak-anak yang telah mengalami
+              pergantian gigi, Tari Baris Jojor yang ditarikan oleh laki-laki
+              dewasa lajang sebagai simbol perang, Tari Baris Dadap yang juga
+              merupakan tarian perang dan dilakukan oleh laki-laki dewasa dalam
+              kelompok. Setiap tarian ini mencerminkan kekayaan dan kedalaman
+              tradisi masyarakat Desa Cempaga.
+            </p>
+            <p>
+              <img
+                src="budaya dan tradisi2.jpg"
+                alt="Profil Desa Cempaga"
+                style="
+                  flex: 1;
+                  width: 100%;
+                  height: auto;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                "
+              />
+              Upacara keagamaan juga menjadi bagian integral dari kehidupan di
+              Desa Cempaga, dengan beberapa acara besar yang diselenggarakan
+              secara rutin. Salah satunya adalah upacara Sabo Muayon yang
+              berlangsung setiap enam bulan sekali, menampilkan berbagai tarian
+              sakral dan melibatkan seluruh masyarakat desa. Selain itu, ada
+              tradisi Nyepi Desa, yang merupakan hari penyucian diri bagi
+              seluruh warga desa, dan Mecacar, tradisi pembagian sisa makanan
+              upacara secara merata kepada warga. Tradisi Mecacar ini
+              melambangkan keharmonisan antara manusia, alam, dan Tuhan,
+              sekaligus memperkuat solidaritas dan kebersamaan dalam masyarakat
+              desa.
+            </p>
+          </div>
+
+          <div class="detail-section">
+            <h3>
+              Masyarakat Desa Cempaga Dalam Menjaga Nilai-nilai Kepercayaan
+              Budaya
+            </h3>
+            <img
+              src="nilai nilai.jpg"
+              alt="Profil Desa Cempaga"
+              style="
+                flex: 1;
+                width: 100%;
+                height: auto;
+                border-radius: 15px;
+                margin-bottom: 15px;
+              "
+            />
+            <p>
+              Masyarakat Cempaga menjaga nilai-nilai kepercayaan tradisional
+              melalui berbagai cara yang diwariskan dari generasi ke generasi.
+              Pelaksanaan upacara adat menjadi sarana utama untuk merevitalisasi
+              kepercayaan, menghubungkan diri dengan leluhur, alam, dan kekuatan
+              gaib yang mereka yakini. Pendidikan nonformal juga berperan
+              penting, di mana orang tua, tokoh adat, dan pemuka agama
+              mengajarkan nilai moral, etika, dan spiritual kepada generasi
+              muda. Seni dan budaya, seperti tarian, musik, dan kerajinan
+              tangan, digunakan sebagai media pelestarian nilai-nilai
+              kepercayaan, mengandung simbol yang merepresentasikan kosmologi
+              dan keyakinan masyarakat.
+            </p>
+          </div>
+
+          <div class="detail-section">
+            <h3>
+              Daya Tarik Tradisi dan Kearifan Lokal Desa Cempaga dalam Memikat
+              Wisatawan
+            </h3>
+            <p>
+              Desa Cempaga memiliki potensi besar untuk mengembangkan wisata
+              berbasis budaya yang dapat menarik wisatawan melalui berbagai
+              kegiatan tematik. Salah satu caranya adalah dengan menawarkan
+              paket wisata yang memungkinkan pengunjung untuk ikut serta dalam
+              upacara adat atau belajar tarian tradisional. Selain itu,
+              penyelenggaraan festival budaya secara berkala dapat menjadi
+              sarana promosi yang efektif, menarik minat wisatawan dalam jumlah
+              besar, sekaligus memperkenalkan kekayaan tradisi lokal kepada
+              masyarakat yang lebih luas. Penginapan berupa homestay juga bisa
+              menjadi daya tarik tersendiri, karena memberikan kesempatan bagi
+              wisatawan untuk merasakan kehidupan sehari-hari masyarakat Desa
+              Cempaga dan mempererat.
+            </p>
+          </div>
+
+          <div class="detail-section">
+            <h3>
+              Tantangan Yang Dihadapi Masyarakat Desa Cempaga di Era Digital
+            </h3>
+            <p>
+              Di Desa Cempaga, adat dan tradisi dilestarikan secara
+              turun-temurun, dengan masyarakat yang merasa memiliki tanggung
+              jawab besar untuk menjaga dan melestarikan warisan leluhur ini.
+              Ada keyakinan kuat di antara warga bahwa jika tradisi dan adat
+              istiadat ini diabaikan, hal tersebut akan dianggap sebagai
+              “kesalahan” bagi warga adat. Nilai-nilai yang diwariskan dari
+              generasi ke generasi ini memberikan rasa identitas dan kebanggaan
+              pada masyarakat Desa Cempaga, menjadikan pelestarian budaya
+              sebagai bagian penting dari kehidupan sehari-hari mereka.
+            </p>
+            <p>
+              Menurut kepala adat Desa Cempaga, masyarakat desa tidak merasakan
+              tantangan dalam menjaga kelestarian budaya dan tradisi yang ada.
+              Hal ini menunjukkan bahwa masyarakat telah terbiasa dan memiliki
+              komitmen yang kuat untuk melanjutkan warisan budaya mereka tanpa
+              hambatan berarti. Warga Desa Cempaga memiliki kesadaran kolektif
+              yang tinggi, sehingga mereka dapat melestarikan budaya lokal
+              dengan baik dan tetap menjaga nilai-nilai tradisional yang menjadi
+              ciri khas desa mereka.
+            </p>
+          </div>
+
+          <div class="detail-section">
+            <h3>Relevansi Budaya dan Tradisi Desa Cempaga dengan P5</h3>
+            <ul>
+              <li>Nilai P5 Gotong royong</li>
+              <img
+                src="p5.jpg"
+                alt="Profil Desa Cempaga"
+                style="
+                  flex: 1;
+                  width: 100%;
+                  height: auto;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                "
+              />
+              <p>
+                Desa Cempaga memiliki kekayaan budaya yang diwariskan secara
+                turun-temurun, terutama melalui keunikan upacara adat dan tarian
+                sakralnya, seperti Tari Jangkang dan Tari Rejang. Tradisi
+                seperti Mecacar tidak hanya mempererat hubungan antara manusia,
+                alam, dan Tuhan, tetapi juga memperkuat solidaritas serta
+                harmoni dalam masyarakat. Budaya ini mencerminkan nilai Profil
+                Pelajar Pancasila (P5) pada dimensi gotong royong, yang terwujud
+                melalui semangat kebersamaan dan kerja sama dalam melestarikan
+                tradisi.
+              </p>
+
+              <p>
+                Dalam konteks Profil Pelajar Pancasila, dimensi gotong royong
+                mencakup nilai-nilai kolaborasi, kepedulian, dan empati yang
+                bertujuan menciptakan harmoni dalam komunitas. Tradisi Mecacar
+                dan pelaksanaan tarian sakral mengintegrasikan partisipasi aktif
+                masyarakat sehingga menjadi manifestasi nyata dari prinsip
+                gotong royong.
+              </p>
+              <li>Nilai P5 Berkebhinekaan Global</li>
+              <img
+                src="bhineka global.jpg"
+                alt="Profil Desa Cempaga"
+                style="
+                  flex: 1;
+                  width: 100%;
+                  height: auto;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                "
+              />
+              <p>
+                Tarian-tarian yang dipentaskan dalam upacara adat di Desa
+                Cempaga tetap dapat dinikmati dan dipelajari oleh para wisatawan
+                yang berkunjung. Hal ini mencerminkan penerapan nilai Profil
+                Pelajar Pancasila (P5) pada dimensi berkebhinekaan global,
+                khususnya dalam aspek toleransi dan penghargaan terhadap
+                keragaman budaya.
+              </p>
+
+              <p>
+                Menurut konsep Profil Pelajar Pancasila, dimensi berkebhinekaan
+                global mencakup kemampuan peserta didik untuk menghargai
+                keberagaman budaya, agama, dan tradisi dalam kehidupan
+                bermasyarakat. Aspek toleransi yang ditunjukkan melalui
+                pembukaan akses terhadap kebudayaan lokal untuk dipelajari oleh
+                wisatawan menegaskan nilai ini.
+              </p>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Harmoni Budaya dan Pariwisata Desa Cempaga 2024</p>
+      </div>
+    </footer>
+  </body>
+</html>
