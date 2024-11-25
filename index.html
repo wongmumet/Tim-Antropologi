@@ -29,20 +29,20 @@
         justify-content: center;
         align-items: center;
         overflow: hidden;
-        position: fixed; /* Untuk memposisikan logo */
+        position: absolute; /* Untuk memposisikan logo */
       }
 
       .logo-image {
         width: 80%; /* Sesuaikan ukuran logo di dalam lingkaran */
         height: auto;
         object-fit: contain;
+        position: sticky;
       }
 
       /* Untuk posisi logo di pojok kiri atas */
       .logo-circle.top-left {
         top: 10px;
         left: -2%;
-        position: fixed;
       }
 
       /* Untuk posisi logo di pojok kanan atas */
@@ -50,7 +50,6 @@
         width: 130px;
         top: 13px;
         right: 2%;
-        position: fixed;
       }
 
       header {
@@ -111,6 +110,13 @@
         text-align: center;
         color: #1a4f7a;
         padding-bottom: 20px;
+        padding-top: 20px;
+      }
+
+      .poster-image h3 {
+        text-align: center;
+        color: #030e17;
+        padding-bottom: 12px;
       }
 
       .poster-section {
@@ -242,6 +248,29 @@
         left: -20px;
         color: #e3e6e9;
       }
+      grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .team-member {
+        text-align: center;
+      }
+
+      .team-member img {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      .team-member h3 {
+        margin-top: 10px;
+        font-size: 18px;
+      }
 
       .footer {
         background: linear-gradient(45deg, #1a4f7a 0%, #2c3e50 100%);
@@ -305,6 +334,10 @@
           top: 12px;
         }
 
+        .grid-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
         header h1 {
           font-size: 4.5vw; /* Ukuran font lebih kecil untuk perangkat kecil */
         }
@@ -365,6 +398,34 @@
         <div class="poster-image">
           <h1>Anthropology Team</h1>
           <img src="poster.jpg" alt="Poster Kampanye Lingkungan" />
+          <h1>PENYUSUN</h1>
+          <div class="grid-container">
+            <div class="team-member">
+              <img src="Shifni Azkiya 3601422044.jpg" alt="Shifni Azkiya" />
+              <h3>Shifni Azkiya 3601422044</h3>
+            </div>
+            <div class="team-member">
+              <img
+                src="Nabela Putri Arinda 3601422031.jpg"
+                alt="Nabela Putri Arinda"
+              />
+              <h3>Nabela Putri Arinda 3601422031</h3>
+            </div>
+            <div class="team-member">
+              <img
+                src="Nita Pandu Mentari 3601422051.jpg"
+                alt="Nita Pandu Mentari"
+              />
+              <h3>Nita Pandu Mentari 3601422051</h3>
+            </div>
+            <div class="team-member">
+              <img
+                src="Muhammad Aniq Hikamuddin 3601422043.jpg"
+                alt="Muhammad Aniq Hikamuddin"
+              />
+              <h3>Muhammad Aniq Hikamuddin 3601422043</h3>
+            </div>
+          </div>
         </div>
 
         <div class="poster-details">
